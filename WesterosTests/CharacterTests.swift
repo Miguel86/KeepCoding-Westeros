@@ -7,12 +7,15 @@
 //
 
 import XCTest
-
+@testable import Westeros
 class CharacterTests: XCTestCase {
+    var startkHouse: House!
+    var starkSigil: Sigil!
     
     override func setUp() {
         super.setUp()
-        
+        starkSigil = Sigil(image: UIImage(), description: "Lobo Huargo")
+        startkHouse = House(name: "Stark", sigil: starkSigil, words: "Se acerca el invierno")
     }
     
     override func tearDown() {
@@ -20,7 +23,8 @@ class CharacterTests: XCTestCase {
     }
     
     func testCharacterExistence(){
-        let character = Character()
+        
+        let character = Character(name: "Eddard", alias: "Ned", house: startkHouse)
         XCTAssertNotNil(character)
     }
 }
