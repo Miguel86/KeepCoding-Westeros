@@ -43,7 +43,7 @@ extension House {
     }
     
     func add(person: Person){
-        guard person.house.name == self.name else{
+        guard person.house == self else{
             return
         }
         _members.insert(person)
@@ -61,4 +61,10 @@ extension House: Equatable{
     static func ==(lhs: House, rhs: House) -> Bool{
         return lhs.proxyForEquality == rhs.proxyForEquality
     }
+}
+// MARK - Hashable
+extension House : Hashable{
+    var hashValue: Int {
+        return proxyForEquality.hashValue
+    }  
 }
