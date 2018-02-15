@@ -2,18 +2,20 @@
 //  CharacterTests.swift
 //  WesterosTests
 //
-//  Created by Miguel Dos Santos Carregal on 11/2/18.
-//  Copyright © 2018 Miguel. All rights reserved.
+//  Created by Miguel Dos Santos Carregal on 08/02/2018.
+//  Copyright © 2018 Miguel Dos Santos Carregal. All rights reserved.
 //
 
 import XCTest
 @testable import Westeros
+
 class PersonTests: XCTestCase {
-    var startkHouse: House!
-    var lannisterkHouse: House!
     
     var starkSigil: Sigil!
     var lannisterSigil: Sigil!
+    
+    var starkHouse: House!
+    var lannisterHouse: House!
     
     var robb: Person!
     var arya: Person!
@@ -24,39 +26,47 @@ class PersonTests: XCTestCase {
         starkSigil = Sigil(image: UIImage(), description: "Lobo Huargo")
         lannisterSigil = Sigil(image: UIImage(), description: "León rampante")
         
-        startkHouse = House(name: "Stark", sigil: starkSigil, words: "Se acerca el invierno")
-        lannisterkHouse = House(name: "Lannister", sigil: lannisterSigil, words: "Oye mi rugido")
+        starkHouse = House(name: "Stark", sigil: starkSigil, words: "Se acerca el invierno")
+        lannisterHouse = House(name: "Lannister", sigil: lannisterSigil, words: "Oye mi rugido")
         
-        robb = Person(name: "Robb", alias: "El joven Lobo", house: startkHouse)
-        arya = Person(name: "Arya", house: startkHouse)
+        robb = Person(name: "Robb", alias: "El Joven Lobo", house: starkHouse)
+        arya = Person(name: "Arya", house: starkHouse)
         
-        tyrion = Person(name: "Tyrion", alias: "El Enano", house: lannisterkHouse)
-        
+        tyrion = Person(name: "Tyrion", alias: "El Enano", house: lannisterHouse)
     }
     
     override func tearDown() {
         super.tearDown()
     }
     
-    func testCharacterExistence(){
+    func testCharacterExistence() {
         XCTAssertNotNil(robb)
         XCTAssertNotNil(arya)
     }
     
-    func testFullName(){
+    func testFullName() {
         XCTAssertEqual(robb.fullName, "Robb Stark")
     }
     
-    func testPersonEquality(){
-        //Identidad
+    func testPersonEquality() {
+        // Identidad
         XCTAssertEqual(tyrion, tyrion)
         
-        //Igualdad
-        let enano = Person(name:"Tyrion", alias: "El Enano", house: lannisterkHouse)
+        // Igualdad
+        let enano = Person(name: "Tyrion", alias: "El Enano", house: lannisterHouse)
         XCTAssertEqual(enano, tyrion)
         
-        //Desigualdad
+        // Desigualdad
         XCTAssertNotEqual(tyrion, arya)
     }
     
+    
 }
+
+
+
+
+
+
+
+

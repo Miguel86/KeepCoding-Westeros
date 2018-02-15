@@ -2,17 +2,18 @@
 //  Character.swift
 //  Westeros
 //
-//  Created by Miguel Dos Santos Carregal on 11/2/18.
-//  Copyright © 2018 Miguel. All rights reserved.
+//  Created by Miguel Dos Santos Carregal on 08/02/2018.
+//  Copyright © 2018 Miguel Dos Santos Carregal. All rights reserved.
 //
+
 import Foundation
 
 final class Person {
     let name: String
     let house: House
-    /* En caso de que _alias tenga contenido devolvera ese valor y sino una cadena vacía. */
     private let _alias: String?
-    var alias : String{
+    
+    var alias: String {
         return _alias ?? ""
     }
     
@@ -24,27 +25,38 @@ final class Person {
 }
 
 extension Person {
-    var fullName: String{
+    var fullName: String {
         return "\(name) \(house.name)"
     }
 }
+
 // MARK: - Proxies
 extension Person {
-    var proxy: String{
+    var proxy: String {
         return "\(name) \(alias) \(house.name)"
     }
 }
+
 // MARK: - Hashable
-extension Person : Hashable {
-    var hashValue: Int{
+extension Person: Hashable {
+    var hashValue: Int {
         return proxy.hashValue
     }
 }
+
 // MARK: - Equatable
-extension Person : Equatable {
+extension Person: Equatable {
     static func ==(lhs: Person, rhs: Person) -> Bool {
         return lhs.proxy == rhs.proxy
     }
-    
-    
 }
+
+
+
+
+
+
+
+
+
+

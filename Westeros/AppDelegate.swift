@@ -2,8 +2,8 @@
 //  AppDelegate.swift
 //  Westeros
 //
-//  Created by Miguel Dos Santos Carregal on 11/2/18.
-//  Copyright © 2018 Miguel. All rights reserved.
+//  Created by Miguel Dos Santos Carregal on 08/02/2018.
+//  Copyright © 2018 Miguel Dos Santos Carregal. All rights reserved.
 //
 
 import UIKit
@@ -15,15 +15,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+
         window = UIWindow(frame: UIScreen.main.bounds)
         
         window?.backgroundColor = .cyan
-        
-        //La mostramos por pantalla
         window?.makeKeyAndVisible()
         
-        let root = UIViewController()
-        window?.rootViewController = root
+        
+        // Crear el modelo
+        let houses = Repository.local.houses
+
+        // Crear los controladorer
+        var controllers = [UIViewController]()
+        for house in houses {
+            controllers.append(HouseDetailViewController(model: house).wrappedInNavigation())
+        }
+        
+        // Creamos los combinadores
+        let tabBarViewController = UITabBarController()
+        tabBarViewController.viewControllers = controllers
+        
+        // Asignamos el rootVC
+        window?.rootViewController = tabBarViewController
         
         return true
     }
