@@ -13,6 +13,8 @@
 		D66987A220362B9000F81BF3 /* WikiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66987A020362B9000F81BF3 /* WikiViewController.swift */; };
 		D66987A320362B9100F81BF3 /* WikiViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D66987A120362B9000F81BF3 /* WikiViewController.xib */; };
 		D68836F420448CE6000C9D4E /* SeasonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68836F320448CE6000C9D4E /* SeasonTests.swift */; };
+		D68836F6204491D3000C9D4E /* Season.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68836F5204491D3000C9D4E /* Season.swift */; };
+		D68836F82044956E000C9D4E /* Episode.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68836F72044956E000C9D4E /* Episode.swift */; };
 		D698BB65203238FC00ECFEA3 /* targaryenSmall.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D698BB62203238FC00ECFEA3 /* targaryenSmall.jpg */; };
 		D698BB66203238FC00ECFEA3 /* codeIsComing.png in Resources */ = {isa = PBXBuildFile; fileRef = D698BB63203238FC00ECFEA3 /* codeIsComing.png */; };
 		D698BB67203238FC00ECFEA3 /* lannister.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D698BB64203238FC00ECFEA3 /* lannister.jpg */; };
@@ -48,6 +50,8 @@
 		D66987A020362B9000F81BF3 /* WikiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WikiViewController.swift; sourceTree = "<group>"; };
 		D66987A120362B9000F81BF3 /* WikiViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WikiViewController.xib; sourceTree = "<group>"; };
 		D68836F320448CE6000C9D4E /* SeasonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonTests.swift; sourceTree = "<group>"; };
+		D68836F5204491D3000C9D4E /* Season.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Season.swift; sourceTree = "<group>"; };
+		D68836F72044956E000C9D4E /* Episode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Episode.swift; sourceTree = "<group>"; };
 		D698BB62203238FC00ECFEA3 /* targaryenSmall.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = targaryenSmall.jpg; sourceTree = "<group>"; };
 		D698BB63203238FC00ECFEA3 /* codeIsComing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = codeIsComing.png; sourceTree = "<group>"; };
 		D698BB64203238FC00ECFEA3 /* lannister.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = lannister.jpg; sourceTree = "<group>"; };
@@ -173,6 +177,8 @@
 				D66987962036149600F81BF3 /* Repository.swift */,
 				D6BF9644203079F100B3363A /* House.swift */,
 				D6BF9649203082E500B3363A /* Person.swift */,
+				D68836F5204491D3000C9D4E /* Season.swift */,
+				D68836F72044956E000C9D4E /* Episode.swift */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -288,8 +294,10 @@
 			files = (
 				D698BB6B20323A8B00ECFEA3 /* HouseDetailViewController.swift in Sources */,
 				D6BF964A203082E500B3363A /* Person.swift in Sources */,
+				D68836F6204491D3000C9D4E /* Season.swift in Sources */,
 				D669879D2036173C00F81BF3 /* UIViewController+Additions.swift in Sources */,
 				D66987972036149600F81BF3 /* Repository.swift in Sources */,
+				D68836F82044956E000C9D4E /* Episode.swift in Sources */,
 				D6BF9645203079F100B3363A /* House.swift in Sources */,
 				D6BF962320306E1D00B3363A /* AppDelegate.swift in Sources */,
 				D66987A220362B9000F81BF3 /* WikiViewController.swift in Sources */,
