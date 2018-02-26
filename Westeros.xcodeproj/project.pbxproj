@@ -12,6 +12,7 @@
 		D669879F203617BF00F81BF3 /* RepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D669879E203617BF00F81BF3 /* RepositoryTests.swift */; };
 		D66987A220362B9000F81BF3 /* WikiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66987A020362B9000F81BF3 /* WikiViewController.swift */; };
 		D66987A320362B9100F81BF3 /* WikiViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D66987A120362B9000F81BF3 /* WikiViewController.xib */; };
+		D68836F420448CE6000C9D4E /* SeasonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68836F320448CE6000C9D4E /* SeasonTests.swift */; };
 		D698BB65203238FC00ECFEA3 /* targaryenSmall.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D698BB62203238FC00ECFEA3 /* targaryenSmall.jpg */; };
 		D698BB66203238FC00ECFEA3 /* codeIsComing.png in Resources */ = {isa = PBXBuildFile; fileRef = D698BB63203238FC00ECFEA3 /* codeIsComing.png */; };
 		D698BB67203238FC00ECFEA3 /* lannister.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D698BB64203238FC00ECFEA3 /* lannister.jpg */; };
@@ -46,6 +47,7 @@
 		D669879E203617BF00F81BF3 /* RepositoryTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoryTests.swift; sourceTree = "<group>"; };
 		D66987A020362B9000F81BF3 /* WikiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WikiViewController.swift; sourceTree = "<group>"; };
 		D66987A120362B9000F81BF3 /* WikiViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WikiViewController.xib; sourceTree = "<group>"; };
+		D68836F320448CE6000C9D4E /* SeasonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonTests.swift; sourceTree = "<group>"; };
 		D698BB62203238FC00ECFEA3 /* targaryenSmall.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = targaryenSmall.jpg; sourceTree = "<group>"; };
 		D698BB63203238FC00ECFEA3 /* codeIsComing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = codeIsComing.png; sourceTree = "<group>"; };
 		D698BB64203238FC00ECFEA3 /* lannister.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = lannister.jpg; sourceTree = "<group>"; };
@@ -160,6 +162,7 @@
 				D669879E203617BF00F81BF3 /* RepositoryTests.swift */,
 				D6BF9642203078A500B3363A /* HouseTests.swift */,
 				D6BF96472030827A00B3363A /* PersonTests.swift */,
+				D68836F320448CE6000C9D4E /* SeasonTests.swift */,
 			);
 			path = WesterosTests;
 			sourceTree = "<group>";
@@ -299,6 +302,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D68836F420448CE6000C9D4E /* SeasonTests.swift in Sources */,
 				D6BF9643203078A500B3363A /* HouseTests.swift in Sources */,
 				D6BF96482030827A00B3363A /* PersonTests.swift in Sources */,
 				D669879F203617BF00F81BF3 /* RepositoryTests.swift in Sources */,
