@@ -49,3 +49,10 @@ extension Episode: Comparable {
         return lhs.proxyForComparison < rhs.proxyForComparison
     }
 }
+
+// MARK: - CustomStringConvertible
+extension Episode: CustomStringConvertible {
+    var description: String {
+        return "Episode: \(title)"
+    }
+}
