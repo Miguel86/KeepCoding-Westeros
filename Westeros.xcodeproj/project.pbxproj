@@ -15,6 +15,7 @@
 		D68836F420448CE6000C9D4E /* SeasonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68836F320448CE6000C9D4E /* SeasonTests.swift */; };
 		D68836F6204491D3000C9D4E /* Season.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68836F5204491D3000C9D4E /* Season.swift */; };
 		D68836F82044956E000C9D4E /* Episode.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68836F72044956E000C9D4E /* Episode.swift */; };
+		D68836FA204497B5000C9D4E /* EpisodeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68836F9204497B5000C9D4E /* EpisodeTests.swift */; };
 		D698BB65203238FC00ECFEA3 /* targaryenSmall.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D698BB62203238FC00ECFEA3 /* targaryenSmall.jpg */; };
 		D698BB66203238FC00ECFEA3 /* codeIsComing.png in Resources */ = {isa = PBXBuildFile; fileRef = D698BB63203238FC00ECFEA3 /* codeIsComing.png */; };
 		D698BB67203238FC00ECFEA3 /* lannister.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D698BB64203238FC00ECFEA3 /* lannister.jpg */; };
@@ -52,6 +53,7 @@
 		D68836F320448CE6000C9D4E /* SeasonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonTests.swift; sourceTree = "<group>"; };
 		D68836F5204491D3000C9D4E /* Season.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Season.swift; sourceTree = "<group>"; };
 		D68836F72044956E000C9D4E /* Episode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Episode.swift; sourceTree = "<group>"; };
+		D68836F9204497B5000C9D4E /* EpisodeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeTests.swift; sourceTree = "<group>"; };
 		D698BB62203238FC00ECFEA3 /* targaryenSmall.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = targaryenSmall.jpg; sourceTree = "<group>"; };
 		D698BB63203238FC00ECFEA3 /* codeIsComing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = codeIsComing.png; sourceTree = "<group>"; };
 		D698BB64203238FC00ECFEA3 /* lannister.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = lannister.jpg; sourceTree = "<group>"; };
@@ -167,6 +169,7 @@
 				D6BF9642203078A500B3363A /* HouseTests.swift */,
 				D6BF96472030827A00B3363A /* PersonTests.swift */,
 				D68836F320448CE6000C9D4E /* SeasonTests.swift */,
+				D68836F9204497B5000C9D4E /* EpisodeTests.swift */,
 			);
 			path = WesterosTests;
 			sourceTree = "<group>";
@@ -313,6 +316,7 @@
 				D68836F420448CE6000C9D4E /* SeasonTests.swift in Sources */,
 				D6BF9643203078A500B3363A /* HouseTests.swift in Sources */,
 				D6BF96482030827A00B3363A /* PersonTests.swift in Sources */,
+				D68836FA204497B5000C9D4E /* EpisodeTests.swift in Sources */,
 				D669879F203617BF00F81BF3 /* RepositoryTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
