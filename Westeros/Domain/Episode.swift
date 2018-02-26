@@ -24,6 +24,10 @@ extension Episode {
     var proxyEquality: String {
         return "\(title) \(airDate)"
     }
+    
+    var proxyForComparison: String {
+        return title.uppercased() //Para no distinguir minusculas y mayusculas.
+    }
 }
 
 // MARK: - Hashable
@@ -36,5 +40,12 @@ extension Episode: Hashable {
 extension Episode: Equatable {
     static func ==(lhs: Episode, rhs: Episode) -> Bool {
         return lhs.proxyEquality == rhs.proxyEquality
+    }
+}
+
+// MARK: - Comparable
+extension Episode: Comparable {
+    static func <(lhs: Episode, rhs: Episode) -> Bool {
+        return lhs.proxyForComparison < rhs.proxyForComparison
     }
 }
