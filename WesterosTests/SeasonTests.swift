@@ -15,7 +15,7 @@ class SeasonTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        season = Season(name: "Season 1", releaseDate: Date(dateString: "17/04/2011"))
+        season = Season(name: "Season 1", releaseDate: Date(dateString: "2011-04-17"))
     }
     
     override func tearDown() {

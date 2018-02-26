@@ -17,10 +17,10 @@ class EpisodeTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        season1 = Season(name: "Season 1", releaseDate: Date(dateString: "17/04/2011"))
+        season1 = Season(name: "Season 1", releaseDate: Date(dateString: "2011-04-17"))
         
-        winterIsComing = Episode(title: "S01E01 - Winter is comming", airDate: Date(dateString: "17/04/2011"), season: season1)
-        theKingsroad = Episode(title: "The Kingsroad", airDate: Date(dateString: "24/04/2011"), season: season1)
+        winterIsComing = Episode(title: "S01E01 - Winter is comming", airDate: Date(dateString: "2011-04-17"), season: season1)
+        theKingsroad = Episode(title: "The Kingsroad", airDate: Date(dateString: "2011-04-24"), season: season1)
     }
     
     override func tearDown() {
