@@ -3,7 +3,7 @@
 //  Westeros
 //
 //  Created by Miguel Dos Santos Carregal on 13/02/2018.
-//  Copyright © 2018 Miguel Dos Santos Carregal. All rights reserved.
+//  Copyright © 2018 Miguel. All rights reserved.
 //
 
 import UIKit

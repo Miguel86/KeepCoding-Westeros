@@ -2,8 +2,8 @@
 //  AppDelegate.swift
 //  Westeros
 //
-//  Created by Miguel Dos Santos Carregal on 08/02/2018.
-//  Copyright © 2018 Miguel Dos Santos Carregal. All rights reserved.
+//  Created by Miguel Dos Santos Carregale on 08/02/2018.
+//  Copyright © 2018 Miguel. All rights reserved.
 //
 
 import UIKit
@@ -25,18 +25,36 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Crear el modelo
         let houses = Repository.local.houses
 
-        // Crear los controladorer
-        var controllers = [UIViewController]()
-        for house in houses {
-            controllers.append(HouseDetailViewController(model: house).wrappedInNavigation())
-        }
-        
+        /* Variante con tabs
         // Creamos los combinadores
         let tabBarViewController = UITabBarController()
-        tabBarViewController.viewControllers = controllers
+        
+        tabBarViewController.viewControllers =
+            houses
+              .map{ HouseDetailViewController(model: $0) }
+              .map{ $0.wrappedInNavigation()}
         
         // Asignamos el rootVC
         window?.rootViewController = tabBarViewController
+        */
+        
+        /* Variante con lista */
+        let houseListViewController = HouseListViewController(model: houses)
+        
+        let lastSelectedHouse = houseListViewController.lastSelectedHouse()
+        //let houseDetailViewControoler = HouseDetailViewController(model: houses.first!)
+        let houseDetailViewControoler = HouseDetailViewController(model: lastSelectedHouse)
+        
+        //Asignamos delegator
+        houseListViewController.delegate = houseDetailViewControoler
+        
+        //Crear el UISplitVC y le asignamos los View Controllers
+        let splitViewController = UISplitViewController()
+        splitViewController.viewControllers = [houseListViewController.wrappedInNavigation(), houseDetailViewControoler.wrappedInNavigation()] //Master -> Detail
+        
+        //Asignamos el rootVC
+        //window?.rootViewController = houseListViewController.wrappedInNavigation()
+        window?.rootViewController = splitViewController
         
         return true
     }

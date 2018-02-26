@@ -3,10 +3,20 @@
 //  Westeros
 //
 //  Created by Miguel Dos Santos Carregal on 08/02/2018.
-//  Copyright © 2018 Miguel Dos Santos Carregal. All rights reserved.
+//  Copyright © 2018 Miguel. All rights reserved.
 //
 
 import UIKit
+extension Date {
+    
+    init(dateString:String) {
+        let dateStringFormatter = DateFormatter()
+        dateStringFormatter.dateFormat = "yyyy-MM-dd"
+        dateStringFormatter.locale = Locale(identifier: "en_US_POSIX")
+        let d = dateStringFormatter.date(from: dateString)!
+        self.init(timeInterval:0, since:d)
+    }
+}
 
 typealias Words = String
 typealias Members = Set<Person>
@@ -16,12 +26,15 @@ final class House {
     let name: String
     let sigil: Sigil
     let words: Words
+    let wikiURL: URL
+    
     private var _members: Members
     
-    init(name: String, sigil: Sigil, words: Words) {
+    init(name: String, sigil: Sigil, words: Words, url: URL) {
         self.name = name
         self.sigil = sigil
         self.words = words
+        self.wikiURL = url
         _members = Members()
     }
 }
@@ -31,11 +44,26 @@ extension House {
         return _members.count
     }
     
+    var sortedMembers: [Person] {
+        return _members.sorted()
+    }
+    
     func add(person: Person) {
         guard person.house == self else {
             return
         }
         _members.insert(person)
+    }
+    
+    func add(persons: Person...){
+        //Aquí persons es de tipo [Person]
+        //Opcion1
+        /*for person in persons{
+            add(person: person)
+        }*/
+        
+        //Opcion2
+        persons.forEach{ add(person: $0)}
     }
 }
 

@@ -3,7 +3,7 @@
 //  Westeros
 //
 //  Created by Miguel Dos Santos Carregal on 12/02/2018.
-//  Copyright © 2018 Miguel Dos Santos Carregal. All rights reserved.
+//  Copyright © 2018 Miguel. All rights reserved.
 //
 
 import UIKit
@@ -16,7 +16,7 @@ class HouseDetailViewController: UIViewController {
     @IBOutlet weak var sigilImageView: UIImageView!
     
     // Mark: - Properties
-    let model: House
+    var model: House
     
     // Mark: - Initialization
     init(model: House) {
@@ -35,6 +35,7 @@ class HouseDetailViewController: UIViewController {
     // Mark: - Life Cycle
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        setupUI()
         syncModelWithView()
     }
     
@@ -45,9 +46,35 @@ class HouseDetailViewController: UIViewController {
         sigilImageView.image = model.sigil.image
         wordsLabel.text = model.words
     }
+    
+    // MARK: - UI
+    func setupUI(){
+        let wikiButton = UIBarButtonItem(title: "Wiki", style: .plain, target: self, action: #selector(displayWiki))
+        let members = UIBarButtonItem(title: "Members", style: .plain, target: self, action: #selector(displayMembers))
+        
+        navigationItem.rightBarButtonItems = [wikiButton, members]
+    }
+    
+    @objc func displayWiki(){
+        let wikiViewController = WikiViewController(model: model)
+        self.navigationController?.pushViewController(wikiViewController, animated: true)
+    }
+    
+    @objc func displayMembers(){
+        //TODO: implement!!!!
+        let memberListViewController = MemberListViewController(model: model.sortedMembers)
+        navigationController?.pushViewController(memberListViewController, animated: true)
+    }
 }
 
-
+extension HouseDetailViewController: HouseListViewControllerDelegate{
+    func houseListViewController(_ vc: HouseListViewController, didSelectHouse house: House) {
+        self.model = house
+        syncModelWithView()
+    }
+    
+    
+}
 
 
 
