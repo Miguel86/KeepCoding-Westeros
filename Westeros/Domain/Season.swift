@@ -20,3 +20,53 @@ final class Season {
         _episodes = Episodes()
     }
 }
+extension Season {
+    func add(episode: Episode) {
+        guard episode.season == self else {
+            return
+        }
+        _episodes.insert(episode)
+    }
+    
+    func add(episodes: Episode...){
+        episodes.forEach{ add(episode: $0) }
+    }
+}
+
+// MARK: - Proxy
+extension Season {
+    var proxyEquality: String {
+        return "\(name) \(releaseDate)"
+    }
+    
+    var proxyForComparison: String {
+        return name.uppercased() //Para no distinguir minusculas y mayusculas.
+    }
+}
+
+// MARK: - Hashable
+extension Season: Hashable {
+    var hashValue: Int {
+        return proxyEquality.hashValue
+    }
+}
+// MARK: - Equatable
+extension Season: Equatable {
+    static func ==(lhs: Season, rhs: Season) -> Bool {
+        return lhs.proxyEquality == rhs.proxyEquality
+    }
+}
+
+// MARK: - Comparable
+extension Season: Comparable {
+    static func <(lhs: Season, rhs: Season) -> Bool {
+        return lhs.proxyForComparison < rhs.proxyForComparison
+    }
+}
+
+// MARK: - CustomStringConvertible
+extension Season: CustomStringConvertible {
+    var description: String {
+        return "Season: \(name)"
+    }
+}
