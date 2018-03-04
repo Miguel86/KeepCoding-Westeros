@@ -54,7 +54,10 @@ class RepositoryTests: XCTestCase {
         XCTAssertEqual(otherFilter.count, 1)
     }
     
-    
+    func testHouseNamedFiltering() {
+        let stark = Repository.local.house(named: .stark)
+        XCTAssertEqual(stark?.name, "Stark")
+    }
     
     
     

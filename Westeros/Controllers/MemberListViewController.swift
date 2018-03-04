@@ -13,7 +13,7 @@ class MemberListViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     //Mark: - Properties
-    let model: [Person]
+    var model: [Person]
     //let house: House
     
     // MARK - Initialization
@@ -31,6 +31,22 @@ class MemberListViewController: UIViewController {
     }
     
     // MARK: - Lifecycle
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        //Nos damos de alta en las notificaciones
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(self, selector: #selector(houseDidChange), name: Notification.Name(HOUSE_DID_CHANGE_NOTIFICATION_NAME), object: nil)
+        
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        //Nos damos de baja de las notificaciones
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.removeObserver(self)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         //Asignamos delegado
@@ -39,6 +55,34 @@ class MemberListViewController: UIViewController {
         //Asignamos datasource
         tableView.dataSource = self
         
+    }
+    
+    // MARK: - Sync
+    func syncModelWithView(){
+        //title = model.name
+    }
+    
+    // MARK: - Notifications
+    @objc func houseDidChange(notification: Notification){
+        
+        //Extraer el userInfo de la notificación
+        //let info = notification.userInfo!
+        guard let info = notification.userInfo else {
+            return
+        }
+        
+        //Sacar la casa del userInfo
+        let house = info[HOUSE_KEY] as? House
+        
+        //Actualizar el modelo
+        guard let model = house else { return }
+        self.model = model.sortedMembers
+        
+        //Sincronizar la vista
+        syncModelWithView()
+        
+        //Recargar los miembros
+        tableView.reloadData()
     }
 }
 // MARK: - UITableViewDatasource
@@ -59,9 +103,6 @@ extension MemberListViewController: UITableViewDataSource{
         //Preguntar por una celda (a una cache) o Crearla
         var cell = tableView.dequeueReusableCell(withIdentifier: cellId)
                 ?? UITableViewCell(style: .default, reuseIdentifier: cellId)
-        /*if(cell == nil){
-            cell = UITableViewCell(style: .default, reuseIdentifier: cellId)
-        }*/
         
         //Sincronizar celda y persona
         cell.textLabel?.text = person.fullName
@@ -73,5 +114,8 @@ extension MemberListViewController: UITableViewDataSource{
 
 // MARK: - UITableViewDelegate
 extension MemberListViewController: UITableViewDelegate{
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let member = model[indexPath.row]
+        navigationController?.pushViewController(MemberDetailViewController(model: member), animated: true)
+    }
 }

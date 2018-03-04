@@ -20,6 +20,9 @@ extension Date {
 
 typealias Words = String
 typealias Members = Set<Person>
+enum HouseName: String {
+    case lannister, stark, targaryen
+}
 
 // MARK: - House
 final class House {

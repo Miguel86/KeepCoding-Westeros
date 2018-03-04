@@ -20,11 +20,11 @@ class HouseDetailViewController: UIViewController {
     
     // Mark: - Initialization
     init(model: House) {
-        // Primero, limpias tu propio desorder
+        // Primero, limpias tu propio desorden
         self.model = model
         // Llamas a super
         super.init(nibName: nil, bundle: Bundle(for: type(of: self)))
-        title = model.name
+        
     }
     
     // Chapuza de los de Cupertino relacionada con los nil
@@ -41,10 +41,16 @@ class HouseDetailViewController: UIViewController {
     
     // Mark: - Sync
     func syncModelWithView() {
+        // Si la vista no se ha iniciado por primera vez, no permitimos sincronizar
+        guard let _ = self.view else {
+            return
+        }
+        
         // Model -> View
         houseNameLabel.text = "House \(model.name)"
         sigilImageView.image = model.sigil.image
         wordsLabel.text = model.words
+        title = model.name
     }
     
     // MARK: - UI
@@ -61,7 +67,6 @@ class HouseDetailViewController: UIViewController {
     }
     
     @objc func displayMembers(){
-        //TODO: implement!!!!
         let memberListViewController = MemberListViewController(model: model.sortedMembers)
         navigationController?.pushViewController(memberListViewController, animated: true)
     }

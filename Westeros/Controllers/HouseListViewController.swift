@@ -27,6 +27,8 @@ class HouseListViewController: UITableViewController {
     init(model: [House]){
         self.model = model
         super.init(style: UITableViewStyle.plain)
+        
+        self.navigationItem.title = "Houses"
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -47,18 +49,15 @@ class HouseListViewController: UITableViewController {
         
         tableView.selectRow(at: indexPath, animated: true, scrollPosition: .top)
     }
+    
     // MARK: - Table view data source
-
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return model.count
     }
-
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellId = "HouseCell"
 
@@ -95,6 +94,18 @@ class HouseListViewController: UITableViewController {
         //delegate?.houseListViewController(self, didSelectHouse: house)
         
         //Opción 3 con notificacion
+        
+        //Si estamos en un iphone hago push, sino la vista esta sin inicializar y rompe el syncModelWithView()
+        if let _ = delegate as? UIViewController {
+            if UIDevice.current.userInterfaceIdiom == .phone {
+                // Crear un controlador de detalle de esa casa
+                let houseDetailViewController = HouseDetailViewController(model: house)
+                
+                // Hacer un push
+                navigationController?.pushViewController(houseDetailViewController, animated: true)
+            }
+        }
+        
         // Aviso al delegado
         delegate?.houseListViewController(self, didSelectHouse: house)
         

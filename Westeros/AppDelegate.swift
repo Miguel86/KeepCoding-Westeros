@@ -12,7 +12,7 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    private var detailControllers: [UINavigationController]!
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
@@ -24,7 +24,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Crear el modelo
         let houses = Repository.local.houses
-
+        let seasons = Repository.local.seasons
+        
         /* Variante con tabs
         // Creamos los combinadores
         let tabBarViewController = UITabBarController()
@@ -38,23 +39,55 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = tabBarViewController
         */
         
-        /* Variante con lista */
+        ///* Variante con lista */
+        //let houseListViewController = HouseListViewController(model: houses)
+        //
+        //let lastSelectedHouse = houseListViewController.lastSelectedHouse()
+        ////let houseDetailViewControoler = HouseDetailViewController(model: houses.first!)
+        //let houseDetailViewControoler = HouseDetailViewController(model: lastSelectedHouse)
+        //
+        ////Asignamos delegator
+        //houseListViewController.delegate = houseDetailViewControoler
+        //
+        ////Crear el UISplitVC y le asignamos los View Controllers
+        //let splitViewController = UISplitViewController()
+        //splitViewController.viewControllers = [houseListViewController.wrappedInNavigation(), houseDetailViewControoler.wrappedInNavigation()] //Master -> Detail
+        //
+        ////Asignamos el rootVC
+        ////window?.rootViewController = houseListViewController.wrappedInNavigation()
+        //window?.rootViewController = splitViewController
+        
+        //Temporadas
+        //let seasonListViewController = SeasonListViewController(model: seasons)
+        //window?.rootViewController = seasonListViewController.wrappedInNavigation()
+        //Vistas maestras
         let houseListViewController = HouseListViewController(model: houses)
+        let seasonListViewController = SeasonListViewController(model: seasons)
         
+        let mainVC = MainTBViewController(seasonListVC: seasonListViewController, houseListVC: houseListViewController)
+        mainVC.delegate = self
+        
+        //Vistas de detalles
         let lastSelectedHouse = houseListViewController.lastSelectedHouse()
-        //let houseDetailViewControoler = HouseDetailViewController(model: houses.first!)
         let houseDetailViewControoler = HouseDetailViewController(model: lastSelectedHouse)
-        
-        //Asignamos delegator
+        //Asignamos delegado
         houseListViewController.delegate = houseDetailViewControoler
         
-        //Crear el UISplitVC y le asignamos los View Controllers
-        let splitViewController = UISplitViewController()
-        splitViewController.viewControllers = [houseListViewController.wrappedInNavigation(), houseDetailViewControoler.wrappedInNavigation()] //Master -> Detail
         
-        //Asignamos el rootVC
-        //window?.rootViewController = houseListViewController.wrappedInNavigation()
+        let lastSelectedSeason = seasonListViewController.lastSelectedSeason()
+        let seasonDetailViewController = SeasonDetailViewController(model: lastSelectedSeason)
+        //Asignamos delegado
+        seasonListViewController.delegate = seasonDetailViewController
+        
+        detailControllers = [houseDetailViewControoler.wrappedInNavigation(), seasonDetailViewController.wrappedInNavigation()]
+        
+        //Split View Controller
+        let splitViewController = UISplitViewController()
+        splitViewController.viewControllers = [mainVC, detailControllers.first!]
+        splitViewController.delegate = self
+        
         window?.rootViewController = splitViewController
+        
         
         return true
     }
@@ -84,3 +117,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
+// MARK: - UITabBarControllerDelegate
+extension AppDelegate: UITabBarControllerDelegate {
+    public func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        if let splitViewController = window?.rootViewController as? UISplitViewController, splitViewController.viewControllers.count > 1 {
+            splitViewController.viewControllers[1] = detailControllers[tabBarController.selectedIndex]
+        }
+    }
+    
+}
+
+// MARK: - UISplitViewControllerDelegate
+extension AppDelegate: UISplitViewControllerDelegate {
+    func splitViewController(_ splitViewController: UISplitViewController, collapseSecondary secondaryViewController: UIViewController, onto primaryViewController: UIViewController) -> Bool {
+        return true
+    }
+}

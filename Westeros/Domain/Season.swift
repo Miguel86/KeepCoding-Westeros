@@ -6,18 +6,26 @@
 //  Copyright © 2018 Miguel. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 typealias Episodes = Set<Episode>
 final class Season {
     let name: String
     let releaseDate: Date
+    let plot: String
+    let image: UIImage
     private var _episodes: Episodes
     
-    init(name: String, releaseDate: Date) {
+    init(name: String, releaseDate: Date, plot: String, image: UIImage) {
         self.name = name
         self.releaseDate = releaseDate
+        self.plot = plot
+        self.image = image
         _episodes = Episodes()
+    }
+    
+    convenience init(name: String, releaseDate: Date) {
+        self.init(name: name, releaseDate: releaseDate, plot: "", image: UIImage());
     }
 }
 extension Season {
@@ -30,6 +38,10 @@ extension Season {
     
     func add(episodes: Episode...){
         episodes.forEach{ add(episode: $0) }
+    }
+    
+    var sortedEpisodes: [Episode] {
+        return _episodes.sorted()
     }
 }
 
